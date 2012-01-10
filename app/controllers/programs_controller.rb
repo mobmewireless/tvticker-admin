@@ -46,7 +46,7 @@ class ProgramsController < ApplicationController
   # POST /programs
   # POST /programs.json
   def create
-    @program = Program.new(params[:program].merge({"version_attributes"=>{}}))
+    @program = Program.new(params[:program].merge({:version_attributes=>{},:thumbnail_attributes=>{:name=>params[:program][:name],:original_link=>params[:program][:thumbnail_link],:remote_image_url=>params[:program][:thumbnail_link]} }))
     respond_to do |format|
       if @program.save
         format.html { redirect_to @program, :notice => 'Program was successfully created.' }
@@ -64,7 +64,7 @@ class ProgramsController < ApplicationController
     @program = Program.find(params[:id])
 
     respond_to do |format|
-      if @program.update_attributes(params[:program].merge({"version_attributes"=>{}}))
+      if @program.update_attributes(params[:program].merge({"version_attributes"=>{},:thumbnail_attributes=>{:name=>params[:program][:name],:original_link=>params[:program][:thumbnail_link],:remote_image_url=>params[:program][:thumbnail_link]}}))
         format.html { redirect_to @program, :notice => 'Program was successfully updated.' }
         format.json { head :ok }
       else

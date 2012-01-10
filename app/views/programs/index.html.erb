@@ -14,7 +14,7 @@
 
 <% @programs.each do |program| %>
   <tr class="<%= cycle('program-line-odd', 'program-line-even') %>">
-    <td><%= image_tag program.thumbnail_link,{:class => 'program-thumbnail'} %></td>
+    <td><%= thumbnail_tag program,{:class => 'program-thumbnail'} %></td>
     <td class="program-description">
     <dl>
         <dt><%= link_to program.name,build_imdb_link(program.imdb_info) %></dt>

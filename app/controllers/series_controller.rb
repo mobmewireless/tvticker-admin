@@ -40,7 +40,8 @@ class SeriesController < ApplicationController
   # POST /series
   # POST /series.json
   def create
-    @series = Series.new(params[:series].merge({"version_attributes"=>{}}))
+
+    @series = Series.new(params[:series].merge({:version_attributes=>{},:thumbnail_attributes=>{:name=>params[:series][:name],:original_link=>params[:series][:thumbnail_link],:remote_image_url=>params[:series][:thumbnail_link]} }))
 
     respond_to do |format|
       if @series.save
@@ -59,7 +60,7 @@ class SeriesController < ApplicationController
     @series = Series.find(params[:id])
 
     respond_to do |format|
-      if @series.update_attributes(params[:series].merge({"version_attributes"=>{}}))
+      if @series.update_attributes(params[:series].merge({:version_attributes=>{},:thumbnail_attributes=>{:name=>params[:series][:name],:original_link=>params[:series][:thumbnail_link],:remote_image_url=>params[:series][:thumbnail_link]} }))
         format.html { redirect_to @series, :notice => 'Series was successfully updated.' }
         format.json { head :ok }
       else
