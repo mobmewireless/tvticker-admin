@@ -32,6 +32,7 @@ gem 'rails3-jquery-autocomplete'
 gem 'searchify' , "~> 1.0.0"
 gem 'chosen_rails'
 gem "chronic", "~> 0.6.6"
+gem 'kaminari'
 
 
 

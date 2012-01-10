@@ -8,13 +8,9 @@
 
 require 'random_data'
 # load "#{File.expand_path(File.dirname(__FILE__))}/../lib/mobme/enterprise/tv_channel_info/models.rb"
-ActiveRecord::Base.connection.execute("truncate channels")
-ActiveRecord::Base.connection.execute("truncate series")
-ActiveRecord::Base.connection.execute("truncate categories")
-ActiveRecord::Base.connection.execute("truncate programs")
-ActiveRecord::Base.connection.execute("truncate versions")
 
-x = 10
+
+x = 100
 x.times do
   Version.create
   channel = Channel.new

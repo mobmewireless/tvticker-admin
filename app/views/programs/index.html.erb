@@ -1,45 +1,49 @@
+<div id="program-list" align="center">
+
 <h1>Listing programs</h1>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Category</th>
-    <th>Series</th>
-    <th>Channel</th>
+    <th>Thumbnail</th>
+    <th>Description</th>
     <th>Air time start</th>
     <th>Air time end</th>
-    <th>Runtime</th>
-    <th>Imdb info</th>
-    <th>Description</th>
-    <th>Thumbnail link</th>
-    <th>Rating</th>
     <th>Version</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
 <% @programs.each do |program| %>
   <tr class="<%= cycle('program-line-odd', 'program-line-even') %>">
-    <td><%= program.name %></td>
-    <td><%= program.category.name %></td>
-    <td><%= program.series_id %></td>
-    <td><%= program.channel.name %></td>
+    <td><%= image_tag program.thumbnail_link,{:class => 'program-thumbnail'} %></td>
+    <td class="program-description">
+    <dl>
+        <dt><%= link_to program.name,build_imdb_link(program.imdb_info) %></dt>
+        <dd><%= truncate(program.description.gsub(/<.*?>/,''),
+              :length => 250) %></dd>
+        <dd>Category:<%= program.category.name %></dd>
+        <dd>Channel:<%= program.channel.name %></dd>
+        <dd>Runtime:<%= program.run_time %></dd>
+        <dd>Rating:<%= program.rating %></dd>
+        <%if program.series%>
+          <dd>
+          Series:<%= program.series.name %>
+          </dd>
+        <%end%>
+    </dl>
+    </td>
     <td><%= program.air_time_start %></td>
     <td><%= program.air_time_end %></td>
-    <td><%= program.run_time %></td>
-    <td><%= program.imdb_info %></td>
-    <td><%= truncate(program.description.gsub(/<.*?>/,''),
-              :length => 250) %></td>
-    <td><%= image_tag program.thumbnail_link,{:class => 'program-thumbnail'} %></td>
-    <td><%= program.rating %></td>
-    <td ><%= link_to 'Show', program %></td>
-    <td><%= link_to 'Edit', edit_program_path(program) %></td>
-    <td><%= link_to 'Destroy', program, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= program.version_id %></td>
+    <td class="program-actions">
+    <%= link_to 'View', program %><br/>
+    <%= link_to 'Edit', edit_program_path(program) %><br/>
+    <%= link_to 'Delete', program, :confirm => 'Are you sure?', :method => :delete %><br/>
+    </td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
+<%= paginate @programs%><br/>
 <%= link_to 'New Program', new_program_path %>
+</div>

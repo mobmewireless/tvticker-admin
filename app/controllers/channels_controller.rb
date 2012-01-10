@@ -2,7 +2,7 @@ class ChannelsController < ApplicationController
   # GET /channels
   # GET /channels.json
   def index
-    @channels = Channel.all
+    @channels = Channel.order("id desc").page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

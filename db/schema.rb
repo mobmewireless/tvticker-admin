@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111219060337) do
+ActiveRecord::Schema.define(:version => 20120110165254) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20111219060337) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "version_id"
+    t.integer  "thumbnail_id"
   end
 
   add_index "programs", ["version_id"], :name => "index_programs_on_version_id"
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20111219060337) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "version_id"
+    t.integer  "thumbnail_id"
   end
 
   add_index "series", ["version_id"], :name => "index_series_on_version_id"

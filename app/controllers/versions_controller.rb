@@ -2,7 +2,7 @@ class VersionsController < ApplicationController
   # GET /versions
   # GET /versions.json
   def index
-    @versions = Version.all
+    @versions = Version.order("id desc").page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

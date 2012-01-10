@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.order("id desc").page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

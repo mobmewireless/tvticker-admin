@@ -2,7 +2,7 @@ class SeriesController < ApplicationController
   # GET /series
   # GET /series.json
   def index
-    @series = Series.all
+    @series = Series.order("id desc").page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

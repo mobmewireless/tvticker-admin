@@ -1,12 +1,11 @@
+<div id="program-list" align="center">
+
 <h1>Listing series</h1>
 
 <table>
   <tr>
+    <th>Thumbnail</th>
     <th>Name</th>
-    <th>Imdb info</th>
-    <th>Description</th>
-    <th>Thumbnail link</th>
-    <th>Rating</th>
     <th>Version</th>
     <th></th>
     <th></th>
@@ -14,19 +13,29 @@
   </tr>
 
 <% @series.each do |series| %>
-  <tr>
-    <td><%= series.name %></td>
-    <td><%= series.imdb_info %></td>
-    <td><%= series.description %></td>
-    <td><%= series.thumbnail_link %></td>
-    <td><%= series.rating %></td>
-    <td><%= link_to 'Show', series %></td>
-    <td><%= link_to 'Edit', edit_series_path(series) %></td>
-    <td><%= link_to 'Destroy', series, :confirm => 'Are you sure?', :method => :delete %></td>
+  <tr class="<%= cycle('program-line-odd', 'program-line-even') %>">
+    <td><%= custom_image_tag series.thumbnail_link,{:class => 'program-thumbnail'} %></td>
+     <td class="program-description">
+    <dl>
+        <dt><%= link_to series.name,build_imdb_link(series.imdb_info) %></dt>
+        <dd><%= truncate(series.description.gsub(/<.*?>/,''),
+              :length => 250) %>
+        </dd>
+        <dd>Rating: <%= series.rating %></dd>
+    </dl>
+    </td>
+    <td><%= series.version_id%></td>
+    <td class="program-actions">
+    <%= link_to 'View', series %><br/>
+    <%= link_to 'Edit', edit_series_path(series)  %><br/>
+    <%= link_to 'Delete', series, :confirm => 'Are you sure?', :method => :delete %><br/>
+    </td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
+<%= paginate @series %><br/>
 <%= link_to 'New Series', new_series_path %>
+
+</div>

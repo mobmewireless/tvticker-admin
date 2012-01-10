@@ -21,6 +21,39 @@ margin:15px 0px;
 background:url(/assets/logo.png) no-repeat;
 width:48px; height:48px;float:left;
 }
+
+table {
+    border-collapse : collapse;
+    border : none;
+    background-color : #424247;
+}
+table.main, table.mainouter {
+    background : #39393d;
+}
+table.bottom {
+    background : transparent;
+}
+
+
+td {
+    font-size : 8pt;
+    border : 1px solid #59595E;
+    text-align :center;
+
+}
+
+
+a:link, a:visited {
+    text-decoration : none;
+    color : #f0f0f0;
+    font-weight : bold;
+    outline: 0px;
+}
+a:hover {
+    color : #acbfd3;
+    outline: 0px;
+}
+
 ul#menubar{
 margin:10px 0px 0px 55px;
 padding:0;
