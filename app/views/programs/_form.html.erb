@@ -1,0 +1,107 @@
+<%= form_for(@program) do |f| %>
+    <% if @program.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@program.errors.count, "error") %> prohibited this program from being saved:</h2>
+
+          <ul>
+            <% @program.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <br/>
+      <%= f.text_field :name %>
+
+      <%#= f.text_field :name %>
+    </div>
+    <div id="imdb_info" style="float:right">
+
+    </div>
+    <div style="clear:both"></div>
+
+    <div class="field">
+      <%= f.label :category_id %>
+      <br/>
+      <%= f.collection_select :category_id, @categories, :id, :name, {}, {:class => "stylized-select"} %>
+    </div>
+    <div class="field">
+      <%= f.label :series_id %>
+      <br/>
+      <%= f.collection_select :series_id, @series, :id, :name, {:include_blank => true, }, {:class => "stylized-select"} %>
+
+    </div>
+    <div class="field">
+      <%= f.label :channel_id %>
+      <br/>
+      <%= f.collection_select :channel_id, @channels, :id, :name, {}, {:class => "stylized-select"} %>
+    </div>
+    <div class="field">
+      <%= f.label :air_time_start %>
+      <br/>
+      <%= f.text_field :air_time_start %>
+    </div>
+    <div class="field">
+      <%= f.label :air_time_end %>
+      <br/>
+      <%= f.text_field :air_time_end %>
+    </div>
+    <div class="field">
+      <%= f.label :run_time %>
+      <br/>
+      <%= f.number_field :run_time %>
+    </div>
+    <div class="field">
+      <%= f.label :imdb_info %>
+      <br/>
+      <%= f.text_field :imdb_info %>
+    </div>
+    <div class="field">
+      <%= f.label :description %>
+      <br/>
+      <%= f.text_area :description %>
+    </div>
+    <div class="field">
+      <%= f.label :thumbnail_link %>
+      <br/>
+      <%= f.text_field :thumbnail_link %>
+    </div>
+    <div class="field">
+      <%= f.label :rating %>
+      <br/>
+      <%= f.text_field :rating %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
+<script type="text/javascript">
+
+
+    $(".stylized-select").chosen();
+    $("#program_air_time_start").datetimepicker();
+    $("#program_air_time_end").datetimepicker();
+    $("#program_name").autocomplete({source:"/ajax/imdb_auto_complete" ,
+        select:  function(event, data) {
+            $.ajax({
+                type: 'GET',
+                data:{imdb_id: data.item.id},
+                url: '/ajax/imdb_description',
+                timeout: 2000,
+                success: function(movie_info) {
+                    $("#program_run_time").val(movie_info.runtime);
+                    $("#program_imdb_info").val(movie_info.imdb_info);
+                    $("#program_description").val(movie_info.plot);
+                    $("#program_thumbnail_link").val(movie_info.poster_url);
+                    $("#program_rating").val(movie_info.rating);
+                }
+            });
+        }
+    });
+
+
+</script>

@@ -1,0 +1,45 @@
+<h1>Listing programs</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Series</th>
+    <th>Channel</th>
+    <th>Air time start</th>
+    <th>Air time end</th>
+    <th>Runtime</th>
+    <th>Imdb info</th>
+    <th>Description</th>
+    <th>Thumbnail link</th>
+    <th>Rating</th>
+    <th>Version</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @programs.each do |program| %>
+  <tr class="<%= cycle('program-line-odd', 'program-line-even') %>">
+    <td><%= program.name %></td>
+    <td><%= program.category.name %></td>
+    <td><%= program.series_id %></td>
+    <td><%= program.channel.name %></td>
+    <td><%= program.air_time_start %></td>
+    <td><%= program.air_time_end %></td>
+    <td><%= program.run_time %></td>
+    <td><%= program.imdb_info %></td>
+    <td><%= truncate(program.description.gsub(/<.*?>/,''),
+              :length => 250) %></td>
+    <td><%= image_tag program.thumbnail_link,{:class => 'program-thumbnail'} %></td>
+    <td><%= program.rating %></td>
+    <td ><%= link_to 'Show', program %></td>
+    <td><%= link_to 'Edit', edit_program_path(program) %></td>
+    <td><%= link_to 'Destroy', program, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Program', new_program_path %>

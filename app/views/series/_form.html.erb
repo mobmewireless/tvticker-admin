@@ -1,0 +1,63 @@
+<%= form_for(@series) do |f| %>
+  <% if @series.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@series.errors.count, "error") %> prohibited this series from being saved:</h2>
+
+      <ul>
+      <% @series.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :imdb_info %><br />
+    <%= f.text_field :imdb_info %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :thumbnail_link %><br />
+    <%= f.text_field :thumbnail_link %>
+  </div>
+  <div class="field">
+    <%= f.label :rating %><br />
+    <%= f.text_field :rating %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<script type="text/javascript">
+
+
+    $(".stylized-select").chosen();
+    $("#series_name").autocomplete({source:"/ajax/imdb_auto_complete" ,
+        select:  function(event, data) {
+            $.ajax({
+                type: 'GET',
+                data:{imdb_id: data.item.id},
+                url: '/ajax/imdb_description',
+                timeout: 2000,
+                success: function(movie_info) {
+                    $("#series_imdb_info").val(movie_info.imdb_info);
+                    $("#series_description").val(movie_info.plot);
+                    $("#series_thumbnail_link").val(movie_info.poster_url);
+                    $("#series_rating").val(movie_info.rating);
+                }
+            });
+        }
+    });
+
+
+</script>

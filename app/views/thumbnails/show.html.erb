@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @thumbnail.name %>
+</p>
+
+<p>
+  <b>Original link:</b>
+  <%= @thumbnail.original_link %>
+</p>
+
+<p>
+  <b>Version:</b>
+  <%= @thumbnail.version_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_thumbnail_path(@thumbnail) %> |
+<%= link_to 'Back', thumbnails_path %>

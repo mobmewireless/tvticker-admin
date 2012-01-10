@@ -1,0 +1,3 @@
+module AjaxHelper
+
+end

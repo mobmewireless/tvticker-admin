@@ -1,0 +1,48 @@
+/* Styles for program_details/index */
+
+ table {
+    border-collapse: collapse;
+    width: 50%;
+    margin: auto;
+}
+
+ table tr td {
+    padding: 5px;
+    vertical-align: top;
+}
+
+ .program-thumbnail {
+    width:        120px;
+    height:       140px;
+}
+
+ .program-description {
+    width:        60%;
+}
+
+ .program-description dl {
+    margin: 0;
+    color:        #666;
+    font-size:    12px;
+}
+
+ .program-description dt {
+    color:        #244;
+    font-weight:  bold;
+    font-size:    larger;
+}
+
+ .program-description dd {
+    margin: 0;
+}
+
+ .program-line-even {
+    background:   #99AADB;
+}
+
+ .program-line-odd {
+    background:   #B4C5C4;
+}
+
+
+

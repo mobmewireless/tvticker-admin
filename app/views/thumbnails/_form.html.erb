@@ -1,0 +1,26 @@
+<%= form_for(@thumbnail) do |f| %>
+  <% if @thumbnail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@thumbnail.errors.count, "error") %> prohibited this thumbnail from being saved:</h2>
+
+      <ul>
+      <% @thumbnail.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :original_link %><br />
+    <%= f.text_area :original_link %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

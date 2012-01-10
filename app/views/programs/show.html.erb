@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @program.name %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @program.category_id %>
+</p>
+
+<p>
+  <b>Series:</b>
+  <%= @program.series_id %>
+</p>
+
+<p>
+  <b>Channel:</b>
+  <%= @program.channel_id %>
+</p>
+
+<p>
+  <b>Air time start:</b>
+  <%= @program.air_time_start %>
+</p>
+
+<p>
+  <b>Air time end:</b>
+  <%= @program.air_time_end %>
+</p>
+
+<p>
+  <b>Runtime:</b>
+  <%= @program.run_time %>
+</p>
+
+<p>
+  <b>Imdb info:</b>
+  <%= @program.imdb_info %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @program.description %>
+</p>
+
+<p>
+  <b>Thumbnail link:</b>
+  <%= @program.thumbnail_link %>
+</p>
+
+<p>
+  <b>Rating:</b>
+  <%= @program.rating %>
+</p>
+
+<p>
+  <b>Version:</b>
+  <%= @program.version_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_program_path(@program) %> |
+<%= link_to 'Back', programs_path %>

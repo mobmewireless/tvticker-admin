@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  category_id: 1
+  series_id: 1
+  channel_id: 1
+  air_time_start: 2011-12-29 00:51:51
+  air_time_end: 2011-12-29 00:51:51
+  runtime: 1
+  imdb_info: MyText
+  description: MyText
+  thumbnail_link: MyText
+  rating: MyString
+  version_id: MyString
+
+two:
+  name: MyString
+  category_id: 1
+  series_id: 1
+  channel_id: 1
+  air_time_start: 2011-12-29 00:51:51
+  air_time_end: 2011-12-29 00:51:51
+  runtime: 1
+  imdb_info: MyText
+  description: MyText
+  thumbnail_link: MyText
+  rating: MyString
+  version_id: MyString
