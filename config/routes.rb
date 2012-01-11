@@ -3,6 +3,8 @@ Web::Application.routes.draw do
 
   get "ajax/imdb_description"
 
+  match 'image/:thumbnail_id/:format' => 'ajax#image'
+    match 'image/:thumbnail_id/' => 'ajax#image'
   resources :versions
 
   resources :thumbnails
@@ -64,7 +66,7 @@ Web::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'programs#index'
+  root :to => 'programs#index'
 
   # See how all your routes lay out with "rake routes"
 

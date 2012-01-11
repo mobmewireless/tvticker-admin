@@ -10,7 +10,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-  process :resize_to_limit => [720, 720]
+  #process :resize_to_limit => [720, 720]
   version :icon40 do
     process :resize_to_fill => [40, 40]
   end
@@ -18,7 +18,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_limit => [60, 60]
   end
   version :thumbnail do
-    process :resize_to_limit => [140, 120]
+    process :resize_to_limit => [240, 280]
   end
   version :profile do
     process :resize_to_limit => [180, 180]

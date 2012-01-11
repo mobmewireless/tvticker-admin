@@ -11,7 +11,6 @@
 //= require jquery-ui
 //= require chosen
 //= require jquery-ui-timepicker-addon
-//= require_tree .
 
 
 

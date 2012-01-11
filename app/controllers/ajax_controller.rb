@@ -1,5 +1,5 @@
 class AjaxController < ApplicationController
-  
+
   def imdb_auto_complete
     p params
     imdb = ImdbParty::Imdb.new(:anonymize => true)
@@ -11,8 +11,13 @@ class AjaxController < ApplicationController
   def imdb_description
     imdb = ImdbParty::Imdb.new(:anonymize => true)
     @movie = imdb.find_movie_by_id(params[:imdb_id])
-    movie_info = Hash[:imdb_info=> @movie.imdb_id, :plot=> @movie.plot, :title=>@movie.title, :runtime =>get_seconds_from(@movie.runtime),:poster_url=>@movie.poster_url,:rating=>@movie.rating]
+    movie_info = Hash[:imdb_info=> @movie.imdb_id, :plot=> @movie.plot, :title=>@movie.title, :runtime =>get_seconds_from(@movie.runtime), :poster_url=>@movie.poster_url, :rating=>@movie.rating]
     render :json=> movie_info
+  end
+
+  def image
+    thumbnail = Thumbnail.find(params[:thumbnail_id]) rescue nil
+    (redirect_to thumbnail.image.url(params[:format])) rescue render :text=> 404
   end
 
   def get_seconds_from(time)
