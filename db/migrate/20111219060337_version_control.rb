@@ -30,13 +30,12 @@ class VersionControl < ActiveRecord::Migration
     remove_index :series, :version_id
     remove_index :thumbnails, :version_id
 
-    remove_column :categories, :version_id, :string
-    remove_column :channels, :version_id, :string
-    remove_column :programs, :version_id, :string
-    remove_column :series, :version_id, :string
-    remove_column :thumbnails, :version_id, :string
+    remove_column :categories, :version_id
+    remove_column :channels, :version_id
+    remove_column :programs, :version_id
+    remove_column :series, :version_id
+    remove_column :thumbnails, :version_id
 
-    drop_table version
-    raise ActiveRecord::IrreversibleMigration
+    drop_table :versions
   end
 end

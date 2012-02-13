@@ -12,6 +12,5 @@ class Series < ActiveRecord::Migration
 
   def self.down
     drop_table   :series
-    raise ActiveRecord::IrreversibleMigration
   end
 end

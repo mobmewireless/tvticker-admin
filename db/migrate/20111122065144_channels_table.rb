@@ -8,6 +8,5 @@ class ChannelsTable < ActiveRecord::Migration
 
   def self.down
     drop_table :channels
-    raise ActiveRecord::IrreversibleMigration
   end
 end

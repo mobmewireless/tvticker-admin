@@ -5,6 +5,5 @@ class AlterProgramRunTimeToBigInt < ActiveRecord::Migration
 
   def self.down
     change_column :programs, :run_time, :datetime
-    raise ActiveRecord::IrreversibleMigration
   end
 end

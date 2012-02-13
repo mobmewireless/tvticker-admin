@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -32,9 +33,9 @@ ActiveRecord::Schema.define(:version => 20120110165254) do
 
   create_table "programs", :force => true do |t|
     t.string   "name"
-    t.integer  "category_id"
-    t.integer  "series_id"
-    t.integer  "channel_id"
+    t.integer  "category_id",                 :default => 0
+    t.integer  "series_id",                   :default => 0
+    t.integer  "channel_id",                  :default => 0
     t.datetime "air_time_start"
     t.datetime "air_time_end"
     t.integer  "run_time",       :limit => 8, :default => 0
@@ -45,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20120110165254) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "version_id"
-    t.integer  "thumbnail_id"
+    t.integer  "thumbnail_id",                :default => 0
   end
 
   add_index "programs", ["version_id"], :name => "index_programs_on_version_id"
@@ -59,7 +60,7 @@ ActiveRecord::Schema.define(:version => 20120110165254) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "version_id"
-    t.integer  "thumbnail_id"
+    t.integer  "thumbnail_id",   :default => 0
   end
 
   add_index "series", ["version_id"], :name => "index_series_on_version_id"

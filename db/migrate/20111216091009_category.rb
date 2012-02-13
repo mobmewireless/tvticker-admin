@@ -8,6 +8,5 @@ class Category < ActiveRecord::Migration
 
   def self.down
     drop_table :categories
-    raise ActiveRecord::IrreversibleMigration
   end
 end

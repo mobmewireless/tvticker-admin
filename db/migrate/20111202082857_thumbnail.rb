@@ -12,6 +12,5 @@ class Thumbnail < ActiveRecord::Migration
 
   def self.down
     drop_table :thumbnails
-    raise ActiveRecord::IrreversibleMigration
   end
 end
