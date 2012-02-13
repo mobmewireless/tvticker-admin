@@ -11,7 +11,7 @@ class Program < ActiveRecord::Migration
       t.text :imdb_info
       t.text :description
       t.text :thumbnail_link
-      t.string :rating
+      t.string :rating ,:default=>"0"
       t.timestamps
     end
   end

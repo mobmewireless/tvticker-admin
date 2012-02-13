@@ -17,6 +17,9 @@ class AjaxController < ApplicationController
 
   def image
     thumbnail = Thumbnail.find(params[:thumbnail_id]) rescue nil
+    if params[:thumbnail_id] =="0"
+      return redirect_to "/assets/no_image.jpg"
+    end
     (redirect_to thumbnail.image.url(params[:format])) rescue render :text=> 404
   end
 

@@ -83,15 +83,15 @@
 
 
     $(".stylized-select").chosen();
-    $("#program_air_time_start").datetimepicker();
-    $("#program_air_time_end").datetimepicker();
+    $("#program_air_time_start").datetimepicker({dateFormat: 'dd-mm-yy'});
+    $("#program_air_time_end").datetimepicker({dateFormat: 'dd-mm-yy'});
     $("#program_name").autocomplete({source:"/ajax/imdb_auto_complete" ,
         select:  function(event, data) {
             $.ajax({
                 type: 'GET',
                 data:{imdb_id: data.item.id},
                 url: '/ajax/imdb_description',
-                timeout: 2000,
+                timeout: 8000,
                 success: function(movie_info) {
                     $("#program_run_time").val(movie_info.runtime);
                     $("#program_imdb_info").val(movie_info.imdb_info);

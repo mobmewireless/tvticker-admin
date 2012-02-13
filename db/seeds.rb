@@ -39,7 +39,7 @@ x.times do
   program.air_time_start = (temp1>temp2) ? temp2 : temp1
   program.air_time_end = (temp1>temp2) ? temp1 : temp2
   program.run_time = program.air_time_end.to_time.to_i - program.air_time_start.to_time.to_i
-  program.imdb_info = "http://www.imdb.com/title/tt0#{ Random.number(100000..999999)}/"
+  program.imdb_info = "tt0#{ Random.number(100000..999999)}"
   program.description = Random.paragraphs
   program.rating = Random.number(1..10)
   program.version_id = Random.number(1..x)

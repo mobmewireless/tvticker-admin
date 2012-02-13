@@ -35,4 +35,6 @@ class Thumbnail < ActiveRecord::Base
  # validates_presence_of :original_link
   mount_uploader :image, ImageUploader
   scope :version_greater_than, lambda { |v| where("version_id > :version_id", {:version_id =>v}).select(column_names - ["version_id"]) }
+
+
 end
