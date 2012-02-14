@@ -13,13 +13,13 @@ class Program < ActiveRecord::Base
   before_save :set_default_values
 
   def set_default_values
-    if self.series_id == ""
+    if self.series_id.to_s.empty?
       self.series_id = 0
     end
-    if self.channel_id == ""
+    if self.channel_id.to_s.empty?
       self.channel_id = 0
     end
-    if self.category_id == ""
+    if self.category_id.to_s.empty?
       self.category_id = 0
     end
   end

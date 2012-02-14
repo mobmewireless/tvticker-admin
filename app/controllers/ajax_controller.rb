@@ -1,4 +1,5 @@
 class AjaxController < ApplicationController
+  layout false
 
   def imdb_auto_complete
     p params
@@ -17,10 +18,10 @@ class AjaxController < ApplicationController
 
   def image
     thumbnail = Thumbnail.find(params[:thumbnail_id]) rescue nil
-    if params[:thumbnail_id] =="0"
-      return redirect_to "/assets/no_image.jpg"
-    end
-    (redirect_to thumbnail.image.url(params[:format])) rescue render :text=> 404
+
+    @image = thumbnail.image.url(params[:format]) rescue "/assets/no_image.jpg"
+    redirect_to @image
+
   end
 
   def get_seconds_from(time)
