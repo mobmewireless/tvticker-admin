@@ -22,5 +22,11 @@ class Program < ActiveRecord::Base
     if self.category_id.to_s.empty?
       self.category_id = 0
     end
+    if self.run_time.to_s.empty?
+      self.run_time = 0
+    end
+    if self.rating.to_s.empty?
+      self.rating = 0
+    end
   end
 end
