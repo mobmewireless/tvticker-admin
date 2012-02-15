@@ -1,0 +1,1 @@
+(function(a){a.fn.searchify=function(){return this.each(function(){a(this).autocomplete({source:a(this).data("search-url"),select:function(b,c){(select_url=a(this).data("select-url"))?window.location.href=select_url.replace(/\(id\)/,c.item.id):a(this).prev().val(c.item.id)}})})}})(jQuery)
