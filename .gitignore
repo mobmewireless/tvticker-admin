@@ -15,3 +15,4 @@ public/uploads/
 /tmp
 # Ignore database config
 config/database.yml
+/vendor/ruby
