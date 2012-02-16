@@ -1,7 +1,4 @@
 Web::Application.routes.draw do
-  # get "ajax/imdb_auto_complete"
-  scope 'tv-ticker' do
-    # get "ajax/imdb_description"
     match "/ajax/imdb_auto_complete" => 'ajax#imdb_auto_complete', :as => :imdb_auto_complete
     match "/ajax/imdb_description" => 'ajax#imdb_description', :as => :imdb_description
     match 'image/:thumbnail_id/:format' => 'ajax#image'
@@ -74,5 +71,4 @@ Web::Application.routes.draw do
     # This is a legacy wild controller route that's not recommended for RESTful applications.
     # Note: This route will make all actions in every controller accessible via GET requests.
     # match ':controller(/:action(/:id(.:format)))'
-  end
 end
