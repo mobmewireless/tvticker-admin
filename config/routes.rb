@@ -1,10 +1,11 @@
 Web::Application.routes.draw do
-  get "ajax/imdb_auto_complete"
+  # get "ajax/imdb_auto_complete"
 
-  get "ajax/imdb_description"
-
+  # get "ajax/imdb_description"
+  match "/ajax/imdb_auto_complete" => 'ajax#imdb_auto_complete'
+  match "/ajax/imdb_description" => 'ajax#imdb_description'
   match 'image/:thumbnail_id/:format' => 'ajax#image'
-    match 'image/:thumbnail_id/' => 'ajax#image'
+  match 'image/:thumbnail_id/' => 'ajax#image'
   resources :versions
 
   resources :thumbnails
