@@ -3,7 +3,7 @@ class ProgramsController < ApplicationController
   # GET /programs
   # GET /programs.json
   def index
-    @programs = Program.order("id desc").page params[:page]
+    @programs = Program.order("id desc").page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
