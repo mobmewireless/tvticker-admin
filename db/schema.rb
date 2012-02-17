@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(:version => 20120110165254) do
     t.text     "imdb_info"
     t.text     "description"
     t.text     "thumbnail_link"
-    t.string   "rating"
+    t.string   "rating",                      :default => "0"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "version_id"
