@@ -11,25 +11,27 @@ require 'random_data'
 
 #Program.delete_all
 x = 1
-#thumbnails = Thumbnail.select(:id).map { |x| x.id }
+thumbnails = Thumbnail.select(:id).map { |x| x.id }
 while x<100 do
-  #Version.create
-  #channel = Channel.new
-  #channel.name = Random.alphanumeric
-  #channel.version_id = Random.number(1..x)
-  #channel.save
-  #series = Series.new
-  #series.name = Random.alphanumeric
-  #series.imdb_info = "http://www.imdb.com/title/tt0#{ Random.number(100000..999999)}/"
-  #series.description = Random.paragraphs
-  #series.rating = Random.number(1..10)
-  #series.version_id = Random.number(1..x)
-  #series.save
-  #category = Category.new
-  #category.name = Random.alphanumeric
-  #category.version_id = Random.number(1..x)
-  #category.save
-  #program = Program.new
+  Version.create
+  channel = Channel.new
+  channel.name = Random.alphanumeric
+  channel.version_id = Random.number(1..x)
+  channel.save
+  series = Series.new
+  series.name = Random.alphanumeric
+  series.imdb_info = "http://www.imdb.com/title/tt0#{ Random.number(100000..999999)}/"
+  series.description = Random.paragraphs
+  series.rating = Random.number(1..10)
+  series.version_id = Random.number(1..x)
+  series.save
+  category = Category.new
+  category.name = Random.alphanumeric
+  category.version_id = Random.number(1..x)
+  category.save
+  program = Program.new
+  sleep 2
+  p "here"
   imdb = ImdbParty::Imdb.new(:anonymize => true)
   if imdb
     id = "tt0#{ Random.number(100000..999999)}"
@@ -51,8 +53,8 @@ while x<100 do
       if t.save
         program = Program.new
         program.name = @movie.title
-        program.category_id = Random.number(1..x)
-        program.channel_id = Random.number(1..x)
+        program.category_id = category[:id]
+        program.channel_id = channel[:id]
         program.series_id = Random.number(1..x)
         temp1 = DateTime.parse("#{Random.date} #{(Time.new+rand(9999)).strftime("at %I:%M%p")  }")
         temp2 = DateTime.parse("#{Random.date} #{(Time.new+rand(9999)).strftime("at %I:%M%p")  }")
