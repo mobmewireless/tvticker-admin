@@ -6,8 +6,7 @@ class Version < ActiveRecord::Base
   has_many :thumbnails
   accepts_nested_attributes_for :categories,:channels,:programs,:series,:thumbnails
 
-  after_initialize :init_version
-    validates_presence_of :number
+  before_save :init_version
   def init_version
     self.number = "#{Time.now.to_i}#{UUID.generate.gsub("-", "")}"
   end
