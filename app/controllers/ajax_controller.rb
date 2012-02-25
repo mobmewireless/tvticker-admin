@@ -18,10 +18,8 @@ class AjaxController < ApplicationController
 
   def image
     thumbnail = Thumbnail.find(params[:thumbnail_id]) rescue nil
-
-    @image = thumbnail.image.url(params[:format]) rescue "/assets/no_image.jpg"
-    redirect_to @image
-
+    @image = "public#{thumbnail.image.url(params[:format])}" rescue "app/assets/images/no_image.jpg"
+    send_file @image, :type => 'image/jpeg', :disposition => 'inline'
   end
 
   def get_seconds_from(time)
