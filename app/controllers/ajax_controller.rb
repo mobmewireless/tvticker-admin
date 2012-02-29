@@ -18,7 +18,7 @@ class AjaxController < ApplicationController
 
   def image
     thumbnail = Thumbnail.find(params[:thumbnail_id]) rescue nil
-    @image = "public#{thumbnail.image.url(params[:format])}" rescue "app/assets/images/no_image.jpg"
+    @image = "public#{thumbnail.image.url(params[:format])}" rescue "app/assets/images/#{params[:format]}_no_image.jpg"
     send_file @image, :type => 'image/jpeg', :disposition => 'inline'
   end
 
